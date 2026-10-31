@@ -1,0 +1,5 @@
+[
+  {"id": 1, "code": "iOS", "description": "iOS"},
+  {"id": 2, "code": "ANDROID", "description": "Android"},
+  {"id": 3, "code": "WEB", "description": "Web"}
+]

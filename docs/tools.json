@@ -1,0 +1,3141 @@
+[
+  {
+    "name": "get_topics",
+    "description": "Справочник тематик",
+    "write": false,
+    "method": "GET",
+    "path": "/topics",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_tags",
+    "description": "Справочник тегов",
+    "write": false,
+    "method": "GET",
+    "path": "/tags",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_channels",
+    "description": "Каналы показа",
+    "write": false,
+    "method": "GET",
+    "path": "/channels",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_banner_types",
+    "description": "Типы баннеров: лимиты и допустимые каналы",
+    "write": false,
+    "method": "GET",
+    "path": "/banner-types",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_segment_types",
+    "description": "Типы сегментов",
+    "write": false,
+    "method": "GET",
+    "path": "/segment-types",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_segments",
+    "description": "Сегменты аудитории с числом клиентов и состоянием",
+    "write": false,
+    "method": "GET",
+    "path": "/segments",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_places",
+    "description": "Места показа, их тип баннера и состояние",
+    "write": false,
+    "method": "GET",
+    "path": "/places",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "list_campaigns",
+    "description": "Список кампаний",
+    "write": false,
+    "method": "GET",
+    "path": "/campaigns",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    }
+  },
+  {
+    "name": "get_campaign",
+    "description": "Кампания со всеми дочерними сущностями и правилами её состояния",
+    "write": false,
+    "method": "GET",
+    "path": "/campaigns/{campaignId}",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "get_campaign_warnings",
+    "description": "Прогон валидации: ошибки и warnings",
+    "write": false,
+    "method": "GET",
+    "path": "/campaigns/{campaignId}/warnings",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "get_campaign_audit",
+    "description": "Журнал аудита, включая комментарии модератора",
+    "write": false,
+    "method": "GET",
+    "path": "/campaigns/{campaignId}/audit",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "create_place",
+    "description": "Создать место показа, которого нет в справочнике",
+    "write": true,
+    "method": "POST",
+    "path": "/places",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "description"
+      ],
+      "title": "PlaceCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "create_tag",
+    "description": "Создать тег, которого нет в справочнике",
+    "write": true,
+    "method": "POST",
+    "path": "/tags",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "TagCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "create_campaign",
+    "description": "Создать кампанию напрямую, без черновика",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns",
+    "input_schema": {
+      "$defs": {
+        "AudienceType": {
+          "enum": [
+            "ALL_USERS",
+            "SEGMENTED"
+          ],
+          "title": "AudienceType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Поля шапки для модели: справочные значения сырые, обёртку {value, label} ставит код.",
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Название, уникальное, до 100 символов",
+          "title": "Name"
+        },
+        "marketingName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Marketingname"
+        },
+        "startDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "YYYY-MM-DD",
+          "title": "Startdate"
+        },
+        "startTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "HH:mm, UTC",
+          "title": "Starttime"
+        },
+        "endDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enddate"
+        },
+        "endTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endtime"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "value из get_topics",
+          "title": "Topic"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_tags",
+          "title": "Tags"
+        },
+        "keywords": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Через ';'",
+          "title": "Keywords"
+        },
+        "audienceType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AudienceType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "weight": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weight"
+        },
+        "initialCtr": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initialctr"
+        },
+        "places": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_places",
+          "title": "Places"
+        }
+      },
+      "title": "CampaignFields",
+      "type": "object"
+    }
+  },
+  {
+    "name": "update_campaign",
+    "description": "Изменить поля существующей кампании: передавайте только то, что меняется",
+    "write": true,
+    "method": "PUT",
+    "path": "/campaigns/{campaignId}",
+    "input_schema": {
+      "$defs": {
+        "AudienceType": {
+          "enum": [
+            "ALL_USERS",
+            "SEGMENTED"
+          ],
+          "title": "AudienceType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Поля шапки для модели: справочные значения сырые, обёртку {value, label} ставит код.",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Название, уникальное, до 100 символов",
+          "title": "Name"
+        },
+        "marketingName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Marketingname"
+        },
+        "startDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "YYYY-MM-DD",
+          "title": "Startdate"
+        },
+        "startTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "HH:mm, UTC",
+          "title": "Starttime"
+        },
+        "endDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enddate"
+        },
+        "endTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endtime"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "value из get_topics",
+          "title": "Topic"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_tags",
+          "title": "Tags"
+        },
+        "keywords": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Через ';'",
+          "title": "Keywords"
+        },
+        "audienceType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AudienceType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "weight": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weight"
+        },
+        "initialCtr": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initialctr"
+        },
+        "places": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_places",
+          "title": "Places"
+        }
+      },
+      "title": "CampaignFields",
+      "type": "object",
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "delete_campaign",
+    "description": "Удалить кампанию",
+    "write": true,
+    "method": "DELETE",
+    "path": "/campaigns/{campaignId}",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "update_segments",
+    "description": "Заменить сегменты существующей кампании",
+    "write": true,
+    "method": "PUT",
+    "path": "/campaigns/{campaignId}/segments",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "included": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Included",
+          "type": "array"
+        },
+        "excluded": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded",
+          "type": "array"
+        }
+      },
+      "title": "SegmentsUpdate",
+      "type": "object",
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "create_banner",
+    "description": "Добавить баннер в кампанию",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/banners",
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "Background": {
+          "additionalProperties": false,
+          "properties": {
+            "color": {
+              "description": "#RRGGBBAA, например #FFFFFFFF",
+              "pattern": "^#[0-9A-Fa-f]{8}$",
+              "title": "Color",
+              "type": "string"
+            }
+          },
+          "required": [
+            "color"
+          ],
+          "title": "Background",
+          "type": "object"
+        },
+        "BannerContent": {
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Title"
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Text"
+            },
+            "titleStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "background": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Background"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "image": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/HttpsImage"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "buttonName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Buttonname"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "voiceOver": {
+              "anyOf": [
+                {
+                  "maxLength": 200,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Voiceover"
+            }
+          },
+          "required": [
+            "actionType"
+          ],
+          "title": "BannerContent",
+          "type": "object"
+        },
+        "FontWeight": {
+          "enum": [
+            "thin",
+            "light",
+            "regular",
+            "medium",
+            "semi-bold",
+            "bold"
+          ],
+          "title": "FontWeight",
+          "type": "string"
+        },
+        "HttpsImage": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "title": "HttpsImage",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "TextStyle": {
+          "additionalProperties": false,
+          "properties": {
+            "fontSize": {
+              "anyOf": [
+                {
+                  "maximum": 40,
+                  "minimum": 10,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Fontsize"
+            },
+            "fontWeight": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FontWeight"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textColor": {
+              "anyOf": [
+                {
+                  "description": "#RRGGBBAA, например #FFFFFFFF",
+                  "pattern": "^#[0-9A-Fa-f]{8}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textcolor"
+            }
+          },
+          "title": "TextStyle",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "bannerTypeId": {
+          "title": "Bannertypeid",
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/BannerContent"
+        }
+      },
+      "required": [
+        "campaignId",
+        "name",
+        "bannerTypeId",
+        "content"
+      ],
+      "title": "BannerCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "update_banner",
+    "description": "Заменить баннер целиком",
+    "write": true,
+    "method": "PUT",
+    "path": "/campaigns/{campaignId}/banners/{bannerId}",
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "Background": {
+          "additionalProperties": false,
+          "properties": {
+            "color": {
+              "description": "#RRGGBBAA, например #FFFFFFFF",
+              "pattern": "^#[0-9A-Fa-f]{8}$",
+              "title": "Color",
+              "type": "string"
+            }
+          },
+          "required": [
+            "color"
+          ],
+          "title": "Background",
+          "type": "object"
+        },
+        "BannerContent": {
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Title"
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Text"
+            },
+            "titleStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "background": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Background"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "image": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/HttpsImage"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "buttonName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Buttonname"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "voiceOver": {
+              "anyOf": [
+                {
+                  "maxLength": 200,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Voiceover"
+            }
+          },
+          "required": [
+            "actionType"
+          ],
+          "title": "BannerContent",
+          "type": "object"
+        },
+        "FontWeight": {
+          "enum": [
+            "thin",
+            "light",
+            "regular",
+            "medium",
+            "semi-bold",
+            "bold"
+          ],
+          "title": "FontWeight",
+          "type": "string"
+        },
+        "HttpsImage": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "title": "HttpsImage",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "TextStyle": {
+          "additionalProperties": false,
+          "properties": {
+            "fontSize": {
+              "anyOf": [
+                {
+                  "maximum": 40,
+                  "minimum": 10,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Fontsize"
+            },
+            "fontWeight": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FontWeight"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textColor": {
+              "anyOf": [
+                {
+                  "description": "#RRGGBBAA, например #FFFFFFFF",
+                  "pattern": "^#[0-9A-Fa-f]{8}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textcolor"
+            }
+          },
+          "title": "TextStyle",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "bannerId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "bannerTypeId": {
+          "title": "Bannertypeid",
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/BannerContent"
+        }
+      },
+      "required": [
+        "campaignId",
+        "bannerId",
+        "name",
+        "bannerTypeId",
+        "content"
+      ],
+      "title": "BannerCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "delete_banner",
+    "description": "Удалить баннер вместе с его креативами",
+    "write": true,
+    "method": "DELETE",
+    "path": "/campaigns/{campaignId}/banners/{bannerId}",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "bannerId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "bannerId"
+      ]
+    }
+  },
+  {
+    "name": "create_content",
+    "description": "Добавить PROMO-экран в кампанию",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/contents",
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "ButtonComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "button",
+              "title": "Role",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            }
+          },
+          "required": [
+            "role",
+            "text",
+            "actionType"
+          ],
+          "title": "ButtonComponent",
+          "type": "object"
+        },
+        "ImageComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "image",
+              "title": "Role",
+              "type": "string"
+            },
+            "url": {
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            },
+            "aspectRatio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aspectratio"
+            }
+          },
+          "required": [
+            "role",
+            "url"
+          ],
+          "title": "ImageComponent",
+          "type": "object"
+        },
+        "LinearContainer": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "linearContainer",
+              "title": "Role",
+              "type": "string"
+            },
+            "axis": {
+              "const": "v",
+              "title": "Axis",
+              "type": "string"
+            },
+            "aligns": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aligns"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            },
+            "components": {
+              "items": {
+                "discriminator": {
+                  "mapping": {
+                    "button": "#/$defs/ButtonComponent",
+                    "image": "#/$defs/ImageComponent",
+                    "text": "#/$defs/TextComponent"
+                  },
+                  "propertyName": "role"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/TextComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ImageComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ButtonComponent"
+                  }
+                ]
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Components",
+              "type": "array"
+            }
+          },
+          "required": [
+            "role",
+            "axis",
+            "components"
+          ],
+          "title": "LinearContainer",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "PromoContent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "promo",
+              "title": "Role",
+              "type": "string"
+            },
+            "component": {
+              "$ref": "#/$defs/LinearContainer"
+            }
+          },
+          "required": [
+            "role",
+            "component"
+          ],
+          "title": "PromoContent",
+          "type": "object"
+        },
+        "TextComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "text",
+              "title": "Role",
+              "type": "string"
+            },
+            "format": {
+              "enum": [
+                "none",
+                "html"
+              ],
+              "title": "Format",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            }
+          },
+          "required": [
+            "role",
+            "format",
+            "text"
+          ],
+          "title": "TextComponent",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "contentType": {
+          "const": "PROMO",
+          "title": "Contenttype",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/PromoContent"
+        }
+      },
+      "required": [
+        "campaignId",
+        "name",
+        "contentType",
+        "content"
+      ],
+      "title": "ContentCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "update_content",
+    "description": "Заменить PROMO-экран целиком",
+    "write": true,
+    "method": "PUT",
+    "path": "/campaigns/{campaignId}/contents/{contentId}",
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "ButtonComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "button",
+              "title": "Role",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            }
+          },
+          "required": [
+            "role",
+            "text",
+            "actionType"
+          ],
+          "title": "ButtonComponent",
+          "type": "object"
+        },
+        "ImageComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "image",
+              "title": "Role",
+              "type": "string"
+            },
+            "url": {
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            },
+            "aspectRatio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aspectratio"
+            }
+          },
+          "required": [
+            "role",
+            "url"
+          ],
+          "title": "ImageComponent",
+          "type": "object"
+        },
+        "LinearContainer": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "linearContainer",
+              "title": "Role",
+              "type": "string"
+            },
+            "axis": {
+              "const": "v",
+              "title": "Axis",
+              "type": "string"
+            },
+            "aligns": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aligns"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            },
+            "components": {
+              "items": {
+                "discriminator": {
+                  "mapping": {
+                    "button": "#/$defs/ButtonComponent",
+                    "image": "#/$defs/ImageComponent",
+                    "text": "#/$defs/TextComponent"
+                  },
+                  "propertyName": "role"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/TextComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ImageComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ButtonComponent"
+                  }
+                ]
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Components",
+              "type": "array"
+            }
+          },
+          "required": [
+            "role",
+            "axis",
+            "components"
+          ],
+          "title": "LinearContainer",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "PromoContent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "promo",
+              "title": "Role",
+              "type": "string"
+            },
+            "component": {
+              "$ref": "#/$defs/LinearContainer"
+            }
+          },
+          "required": [
+            "role",
+            "component"
+          ],
+          "title": "PromoContent",
+          "type": "object"
+        },
+        "TextComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "text",
+              "title": "Role",
+              "type": "string"
+            },
+            "format": {
+              "enum": [
+                "none",
+                "html"
+              ],
+              "title": "Format",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            }
+          },
+          "required": [
+            "role",
+            "format",
+            "text"
+          ],
+          "title": "TextComponent",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "contentId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "contentType": {
+          "const": "PROMO",
+          "title": "Contenttype",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/PromoContent"
+        }
+      },
+      "required": [
+        "campaignId",
+        "contentId",
+        "name",
+        "contentType",
+        "content"
+      ],
+      "title": "ContentCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "delete_content",
+    "description": "Удалить PROMO-экран и отвязать его от креативов",
+    "write": true,
+    "method": "DELETE",
+    "path": "/campaigns/{campaignId}/contents/{contentId}",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "contentId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "contentId"
+      ]
+    }
+  },
+  {
+    "name": "create_creative",
+    "description": "Связать баннер, контент и канал",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/creatives",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "bannerId": {
+          "title": "Bannerid",
+          "type": "integer"
+        },
+        "contentId": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contentid"
+        },
+        "channelCode": {
+          "minLength": 1,
+          "title": "Channelcode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "campaignId",
+        "name",
+        "bannerId",
+        "channelCode"
+      ],
+      "title": "CreativeCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "update_creative",
+    "description": "Заменить креатив целиком",
+    "write": true,
+    "method": "PUT",
+    "path": "/campaigns/{campaignId}/creatives/{creativeId}",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "creativeId": {
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "bannerId": {
+          "title": "Bannerid",
+          "type": "integer"
+        },
+        "contentId": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contentid"
+        },
+        "channelCode": {
+          "minLength": 1,
+          "title": "Channelcode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "campaignId",
+        "creativeId",
+        "name",
+        "bannerId",
+        "channelCode"
+      ],
+      "title": "CreativeCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "delete_creative",
+    "description": "Удалить креатив",
+    "write": true,
+    "method": "DELETE",
+    "path": "/campaigns/{campaignId}/creatives/{creativeId}",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "creativeId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "creativeId"
+      ]
+    }
+  },
+  {
+    "name": "to_moderation",
+    "description": "Отправить кампанию на модерацию",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/to-moderation",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "decline_campaign",
+    "description": "Отклонить кампанию с комментарием (только модератор)",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/decline",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        },
+        "comment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "comment"
+      ]
+    }
+  },
+  {
+    "name": "approve_campaign",
+    "description": "Одобрить кампанию (только модератор)",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/approve",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "activate_campaign",
+    "description": "Запустить показ одобренной кампании",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/activate",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "stop_campaign",
+    "description": "Остановить показ",
+    "write": true,
+    "method": "POST",
+    "path": "/campaigns/{campaignId}/stop",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "draft_update_campaign",
+    "description": "Заполнить поля шапки в черновике: передавайте только известные поля",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "$defs": {
+        "AudienceType": {
+          "enum": [
+            "ALL_USERS",
+            "SEGMENTED"
+          ],
+          "title": "AudienceType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Название, уникальное, до 100 символов",
+          "title": "Name"
+        },
+        "marketingName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Marketingname"
+        },
+        "startDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "YYYY-MM-DD",
+          "title": "Startdate"
+        },
+        "startTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "HH:mm, UTC",
+          "title": "Starttime"
+        },
+        "endDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enddate"
+        },
+        "endTime": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endtime"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "value из get_topics",
+          "title": "Topic"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_tags",
+          "title": "Tags"
+        },
+        "keywords": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Через ';'",
+          "title": "Keywords"
+        },
+        "audienceType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AudienceType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "weight": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weight"
+        },
+        "initialCtr": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initialctr"
+        },
+        "places": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "id из get_places",
+          "title": "Places"
+        },
+        "noEndDate": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "true, только если менеджер прямо сказал, что окончания нет",
+          "title": "Noenddate"
+        }
+      },
+      "title": "DraftCampaignFields",
+      "type": "object"
+    }
+  },
+  {
+    "name": "draft_set_segments",
+    "description": "Задать сегменты в черновике; возвращает их описание и смысл объединения",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "included": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Included",
+          "type": "array"
+        },
+        "excluded": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded",
+          "type": "array"
+        }
+      },
+      "title": "SegmentsUpdate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "draft_upsert_banner",
+    "description": "Добавить или заменить баннер в черновике; JSON проверяется по схеме",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "Background": {
+          "additionalProperties": false,
+          "properties": {
+            "color": {
+              "description": "#RRGGBBAA, например #FFFFFFFF",
+              "pattern": "^#[0-9A-Fa-f]{8}$",
+              "title": "Color",
+              "type": "string"
+            }
+          },
+          "required": [
+            "color"
+          ],
+          "title": "Background",
+          "type": "object"
+        },
+        "BannerContent": {
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Title"
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Text"
+            },
+            "titleStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TextStyle"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "background": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Background"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "image": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/HttpsImage"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "buttonName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Buttonname"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "required": [
+            "title",
+            "text",
+            "actionType"
+          ],
+          "title": "BannerContent",
+          "type": "object"
+        },
+        "FontWeight": {
+          "enum": [
+            "thin",
+            "light",
+            "regular",
+            "medium",
+            "semi-bold",
+            "bold"
+          ],
+          "title": "FontWeight",
+          "type": "string"
+        },
+        "HttpsImage": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "title": "HttpsImage",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "TextStyle": {
+          "additionalProperties": false,
+          "properties": {
+            "fontSize": {
+              "anyOf": [
+                {
+                  "maximum": 40,
+                  "minimum": 10,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Fontsize"
+            },
+            "fontWeight": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/FontWeight"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textColor": {
+              "anyOf": [
+                {
+                  "description": "#RRGGBBAA, например #FFFFFFFF",
+                  "pattern": "^#[0-9A-Fa-f]{8}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textcolor"
+            }
+          },
+          "title": "TextStyle",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Ключ сущности внутри черновика, например story"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "bannerTypeId": {
+          "title": "Bannertypeid",
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/BannerContent"
+        }
+      },
+      "required": [
+        "key",
+        "name",
+        "bannerTypeId",
+        "content"
+      ],
+      "title": "BannerCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "draft_upsert_content",
+    "description": "Добавить или заменить PROMO-экран в черновике; JSON проверяется по схеме",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "default",
+            "externalLink",
+            "openSmartLink",
+            "closeCampaign",
+            "doneCampaign"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        },
+        "ButtonComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "button",
+              "title": "Role",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "actionType": {
+              "$ref": "#/$defs/ActionType"
+            },
+            "link": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Link"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            }
+          },
+          "required": [
+            "role",
+            "text",
+            "actionType"
+          ],
+          "title": "ButtonComponent",
+          "type": "object"
+        },
+        "ImageComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "image",
+              "title": "Role",
+              "type": "string"
+            },
+            "url": {
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            },
+            "aspectRatio": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aspectratio"
+            }
+          },
+          "required": [
+            "role",
+            "url"
+          ],
+          "title": "ImageComponent",
+          "type": "object"
+        },
+        "LinearContainer": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "linearContainer",
+              "title": "Role",
+              "type": "string"
+            },
+            "axis": {
+              "const": "v",
+              "title": "Axis",
+              "type": "string"
+            },
+            "aligns": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Aligns"
+            },
+            "style": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Style"
+            },
+            "components": {
+              "items": {
+                "discriminator": {
+                  "mapping": {
+                    "button": "#/$defs/ButtonComponent",
+                    "image": "#/$defs/ImageComponent",
+                    "text": "#/$defs/TextComponent"
+                  },
+                  "propertyName": "role"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/TextComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ImageComponent"
+                  },
+                  {
+                    "$ref": "#/$defs/ButtonComponent"
+                  }
+                ]
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Components",
+              "type": "array"
+            }
+          },
+          "required": [
+            "role",
+            "axis",
+            "components"
+          ],
+          "title": "LinearContainer",
+          "type": "object"
+        },
+        "Link": {
+          "additionalProperties": false,
+          "properties": {
+            "iOS": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Ios"
+            },
+            "android": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Android"
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Web"
+            }
+          },
+          "title": "Link",
+          "type": "object"
+        },
+        "PromoContent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "promo",
+              "title": "Role",
+              "type": "string"
+            },
+            "component": {
+              "$ref": "#/$defs/LinearContainer"
+            }
+          },
+          "required": [
+            "role",
+            "component"
+          ],
+          "title": "PromoContent",
+          "type": "object"
+        },
+        "TextComponent": {
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "text",
+              "title": "Role",
+              "type": "string"
+            },
+            "format": {
+              "enum": [
+                "none",
+                "html"
+              ],
+              "title": "Format",
+              "type": "string"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "textStyle": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Textstyle"
+            }
+          },
+          "required": [
+            "role",
+            "format",
+            "text"
+          ],
+          "title": "TextComponent",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Ключ сущности внутри черновика, например story"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "contentType": {
+          "const": "PROMO",
+          "title": "Contenttype",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/PromoContent"
+        }
+      },
+      "required": [
+        "key",
+        "name",
+        "contentType",
+        "content"
+      ],
+      "title": "ContentCreate",
+      "type": "object"
+    }
+  },
+  {
+    "name": "draft_set_creatives",
+    "description": "Задать креативы черновика: связи баннера, контента и канала по ключам",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "$defs": {
+        "DraftCreative": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "bannerKey": {
+              "title": "Bannerkey",
+              "type": "string"
+            },
+            "contentKey": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contentkey"
+            },
+            "channelCode": {
+              "description": "iOS, ANDROID или WEB",
+              "title": "Channelcode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "bannerKey",
+            "channelCode"
+          ],
+          "title": "DraftCreative",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "creatives": {
+          "items": {
+            "$ref": "#/$defs/DraftCreative"
+          },
+          "title": "Creatives",
+          "type": "array"
+        }
+      },
+      "required": [
+        "creatives"
+      ],
+      "title": "DraftCreatives",
+      "type": "object"
+    }
+  },
+  {
+    "name": "draft_open_campaign",
+    "description": "Открыть существующую кампанию в черновике, чтобы исправить её и сохранить через apply_draft",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "campaignId": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "campaignId"
+      ]
+    }
+  },
+  {
+    "name": "draft_review",
+    "description": "Проверить черновик: ошибки, warnings, советы и описание аудитории",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "draft_reset",
+    "description": "Очистить черновик, чтобы начать новую кампанию",
+    "write": false,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "apply_draft",
+    "description": "Записать проверенный черновик в систему: кампания, сегменты, баннеры, контент, креативы",
+    "write": true,
+    "method": null,
+    "path": null,
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  }
+]

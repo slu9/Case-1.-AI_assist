@@ -1,0 +1,16 @@
+[
+  {"campaignId": 101, "placeIds": [2]},
+  {"campaignId": 102, "placeIds": [1]},
+  {"campaignId": 103, "placeIds": [3]},
+  {"campaignId": 104, "placeIds": [1, 4]},
+  {"campaignId": 106, "placeIds": [1, 5, 6]},
+  {"campaignId": 107, "placeIds": [6]},
+  {"campaignId": 108, "placeIds": [2]},
+  {"campaignId": 109, "placeIds": [5]},
+  {"campaignId": 110, "placeIds": [1, 7]},
+  {"campaignId": 111, "placeIds": [1]},
+  {"campaignId": 112, "placeIds": [2, 3]},
+  {"campaignId": 113, "placeIds": [8]},
+  {"campaignId": 114, "placeIds": [6]},
+  {"campaignId": 115, "placeIds": [5]}
+]

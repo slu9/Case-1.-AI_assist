@@ -1,0 +1,104 @@
+[
+  {
+    "payload": {
+      "name": "Премиальная карта: осенняя акция",
+      "marketingName": "Осень с премиальной картой",
+      "startDate": "2026-11-05",
+      "startTime": "10:00",
+      "endDate": "2026-12-31",
+      "endTime": "23:59",
+      "topic": {"value": "SALES", "label": "Продажи"},
+      "tags": [{"value": 4, "label": "Карты"}, {"value": 3, "label": "Скидки"}],
+      "keywords": "карта;премиум;кэшбэк",
+      "audienceType": "SEGMENTED",
+      "weight": 10.0,
+      "initialCtr": 15.0,
+      "places": [{"value": 2, "label": "mainScreenSmartBanner"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Сомелье: подбор вина",
+      "startDate": "2026-11-15",
+      "startTime": "12:00",
+      "topic": {"value": "RECOMMENDATION", "label": "Рекомендации"},
+      "audienceType": "ALL_USERS",
+      "places": [{"value": 3, "label": "catalogPromo"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Путешествия: кэшбэк на отели",
+      "marketingName": "Отдохни и получи кэшбэк",
+      "startDate": "2026-10-15",
+      "startTime": "09:00",
+      "endDate": "2026-11-15",
+      "endTime": "23:59",
+      "topic": {"value": "LIFESTYLE", "label": "Lifestyle"},
+      "tags": [{"value": 3, "label": "Скидки"}, {"value": 1, "label": "Банковские продукты"}],
+      "keywords": "путешествия;отели;кэшбэк",
+      "audienceType": "SEGMENTED",
+      "weight": 8.0,
+      "places": [{"value": 1, "label": "mainScreenStories"}, {"value": 5, "label": "paymentsScreenBanner"}, {"value": 6, "label": "historyScreenBanner"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Страхование выезда за рубеж",
+      "startDate": "2026-11-10",
+      "startTime": "00:00",
+      "endDate": "2026-12-10",
+      "endTime": "23:59",
+      "topic": {"value": "ADVICES", "label": "Советы"},
+      "tags": [{"value": 1, "label": "Банковские продукты"}],
+      "keywords": "страховка;путешествия",
+      "audienceType": "SEGMENTED",
+      "weight": 3.0,
+      "initialCtr": 10.0,
+      "places": [{"value": 6, "label": "historyScreenBanner"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Курс по финансовой грамотности",
+      "marketingName": "Финансы простыми словами",
+      "startDate": "2026-11-20",
+      "startTime": "08:00",
+      "topic": {"value": "COURSES", "label": "Курсы"},
+      "tags": [{"value": 6, "label": "Онбординг"}],
+      "audienceType": "ALL_USERS",
+      "places": [{"value": 2, "label": "mainScreenSmartBanner"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Автокредит: ставка от 7,9%",
+      "marketingName": "Твой новый автомобиль",
+      "startDate": "2026-11-05",
+      "startTime": "00:00",
+      "endDate": "2026-12-05",
+      "endTime": "23:59",
+      "topic": {"value": "SALES", "label": "Продажи"},
+      "tags": [{"value": 1, "label": "Банковские продукты"}],
+      "keywords": "автокредит;автомобиль",
+      "audienceType": "SEGMENTED",
+      "weight": 6.0,
+      "places": [{"value": 1, "label": "mainScreenStories"}, {"value": 7, "label": "depositScreenPromo"}]
+    }
+  },
+  {
+    "payload": {
+      "name": "Зимний марафон скидок",
+      "startDate": "2026-12-01",
+      "startTime": "09:00",
+      "endDate": "2027-01-15",
+      "endTime": "23:59",
+      "topic": {"value": "EVENT", "label": "Событие"},
+      "tags": [{"value": 3, "label": "Скидки"}],
+      "keywords": "скидки;зима;распродажа",
+      "audienceType": "SEGMENTED",
+      "weight": 12.0,
+      "places": [{"value": 1, "label": "mainScreenStories"}]
+    }
+  }
+]

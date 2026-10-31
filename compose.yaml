@@ -1,0 +1,36 @@
+services:
+  api:
+    build: .
+    command: uvicorn --factory backend.api:create_app --host 0.0.0.0 --port 8000
+    volumes:
+      - campaign-data:/app/var
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/topics')"]
+      interval: 3s
+      retries: 20
+
+  agent:
+    build: .
+    command: uvicorn --factory backend.server:create_app --host 0.0.0.0 --port 8001
+    env_file: .env
+    environment:
+      CAMPAIGN_API_URL: http://api:8000
+    volumes:
+      - campaign-data:/app/var
+    depends_on:
+      api:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+      args:
+        CAMPAIGN_API_URL: http://api:8000
+        CAMPAIGN_AGENT_URL: http://agent:8001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+
+volumes:
+  campaign-data:

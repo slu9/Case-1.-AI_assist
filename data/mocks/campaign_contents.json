@@ -1,0 +1,378 @@
+[
+  {
+    "id": 301,
+    "campaignId": 101,
+    "name": "Промо-экран: премиальная карта",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#FFFFFFFF"},
+        "components": [
+          {
+            "role": "image",
+            "url": "https://media.hackathon-crm.example/CAMPAIGNS/c261bb69-6d13-49a3-9707-4f698f2b5d28",
+            "aspectRatio": 2.0
+          },
+          {
+            "role": "text",
+            "format": "html",
+            "text": "<b>Кэшбэк 10%</b> в кафе и на заправках",
+            "textStyle": {"fontSize": 24, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Оформите премиальную карту и получайте повышенный кэшбэк до 31 декабря",
+            "textStyle": {"fontSize": 15, "fontWeight": "regular", "textColor": "#00001499"}
+          },
+          {
+            "role": "button",
+            "text": "Оформить карту",
+            "actionType": "externalLink",
+            "link": {
+              "iOS": "mobilebank://products/card/premium",
+              "android": "mobilebank://products/card/premium"
+            },
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#1244A8FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 302,
+    "campaignId": 102,
+    "name": "Промо-экран: автоплатежи",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#1244A8FF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Автоплатежи: кэшбэк до 10%",
+            "textStyle": {"fontSize": 24, "fontWeight": "semi-bold", "textColor": "#FFFFFFFF"}
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Подключите автоплатежи за пару кликов",
+            "textStyle": {"fontSize": 15, "fontWeight": "regular", "textColor": "#FFFFFFFF"}
+          },
+          {
+            "role": "button",
+            "text": "Подключить",
+            "actionType": "doneCampaign",
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#0B7A3EFF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 304,
+    "campaignId": 106,
+    "name": "Промо-экран: отели",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#FFFFFFFF"},
+        "components": [
+          {
+            "role": "image",
+            "url": "https://media.hackathon-crm.example/CAMPAIGNS/7f3c2a10-94e5-4b8d-a1c2-3d5f6e8a9b04",
+            "aspectRatio": 1.8
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Кэшбэк 5% на бронирование отелей",
+            "textStyle": {"fontSize": 22, "fontWeight": "bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "text",
+            "format": "html",
+            "text": "Бронируйте в приложении до <b>15 ноября</b> и получайте кэшбэк бонусами",
+            "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#00001499"}
+          },
+          {
+            "role": "button",
+            "text": "Выбрать отель",
+            "actionType": "externalLink",
+            "link": {"iOS": "mobilebank://travel/hotels", "android": "mobilebank://travel/hotels"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#7A00E6FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 305,
+    "campaignId": 107,
+    "name": "Промо-экран: страховка",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#F7FCF9FF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Страхование выезда за рубеж",
+            "textStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Полис оформляется онлайн за 2 минуты. Покрытие медицинских расходов до 100 000 $",
+            "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#00001499"}
+          },
+          {
+            "role": "image",
+            "url": "https://media.hackathon-crm.example/CAMPAIGNS/e94a1f38-6d27-4c5b-9f0e-8a3b2c1d7e69",
+            "aspectRatio": 2.2
+          },
+          {
+            "role": "button",
+            "text": "Рассчитать полис",
+            "actionType": "externalLink",
+            "link": {"iOS": "mobilebank://insurance/travel", "android": "mobilebank://insurance/travel", "web": "https://promo.hackathon-crm.example/insurance/travel"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#0B7A3EFF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 306,
+    "campaignId": 109,
+    "name": "Промо-экран: подписка",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#FFFFFFFF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Мобильная подписка: месяц в подарок",
+            "textStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "button",
+            "text": "Подключить",
+            "actionType": "doneCampaign",
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#1244A8FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 307,
+    "campaignId": 110,
+    "name": "Промо-экран: автокредит",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#F0F4FFFF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Автокредит: ставка от 7,9%",
+            "textStyle": {"fontSize": 22, "fontWeight": "bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Одобрение за 2 минуты, первый взнос от 10%, срок до 7 лет",
+            "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#00001499"}
+          },
+          {
+            "role": "image",
+            "url": "https://media.hackathon-crm.example/CAMPAIGNS/5d1c9b84-3e76-4a2f-b8d0-7c9e1f4a2b83.png",
+            "aspectRatio": 1.8
+          },
+          {
+            "role": "button",
+            "text": "Рассчитать кредит",
+            "actionType": "externalLink",
+            "link": {"iOS": "mobilebank://loans/auto", "android": "mobilebank://loans/auto"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#003BF8FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 308,
+    "campaignId": 111,
+    "name": "Промо-экран: марафон",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#24009EFF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Зимний марафон скидок",
+            "textStyle": {"fontSize": 24, "fontWeight": "bold", "textColor": "#FFFFFFFF"}
+          },
+          {
+            "role": "text",
+            "format": "html",
+            "text": "12 дней, каждый день — новая категория повышенного кэшбэка. Подключитесь в первый день и не пропустите <b>категорию 20%</b>",
+            "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#FFFFFFFF"}
+          },
+          {
+            "role": "button",
+            "text": "Участвовать",
+            "actionType": "externalLink",
+            "link": {"iOS": "mobilebank://promo/winter-marathon", "android": "mobilebank://promo/winter-marathon", "web": "https://promo.hackathon-crm.example/promo/winter-marathon"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#24009EFF"},
+            "style": {"backgroundColor": "#FFFFFFFF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 309,
+    "campaignId": 112,
+    "name": "Промо-экран: инвестиции",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Онбординг в инвестиции",
+            "textStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "image",
+            "url": "https://media.hackathon-crm.example/CAMPAIGNS/2b8e4d71-5c09-4f3a-8e2b-9a1c7d4f6e35.png",
+            "aspectRatio": 2.0
+          },
+          {
+            "role": "button",
+            "text": "Начать обучение",
+            "actionType": "externalLink",
+            "link": {"web": "https://promo.hackathon-crm.example/invest/education"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#1244A8FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 310,
+    "campaignId": 114,
+    "name": "Промо-экран: переводы",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#FFFFFFFF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Переводы без комиссии",
+            "textStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "text",
+            "format": "none",
+            "text": "До 100 000 ₽ в месяц на карты любых банков — по номеру телефона",
+            "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#00001499"}
+          },
+          {
+            "role": "button",
+            "text": "Перевести",
+            "actionType": "externalLink",
+            "link": {"iOS": "mobilebank://payments/transfer", "android": "mobilebank://payments/transfer"},
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+            "style": {"backgroundColor": "#1244A8FF"}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 311,
+    "campaignId": 115,
+    "name": "Промо-экран: подписка кино",
+    "contentType": "PROMO",
+    "content": {
+      "role": "promo",
+      "component": {
+        "role": "linearContainer",
+        "axis": "v",
+        "aligns": "lt",
+        "style": {"backgroundColor": "#F3E8FFFF"},
+        "components": [
+          {
+            "role": "text",
+            "format": "none",
+            "text": "Подписка на фильмы: первый месяц за 1 ₽",
+            "textStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#000014FF"}
+          },
+          {
+            "role": "button",
+            "text": "Понятно",
+            "actionType": "closeCampaign",
+            "textStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#000014FF"},
+            "style": {"backgroundColor": "#FFFFFFFF"}
+          }
+        ]
+      }
+    }
+  }
+]

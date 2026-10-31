@@ -1,0 +1,249 @@
+[
+  {
+    "id": 201,
+    "campaignId": 101,
+    "name": "Смарт-баннер осенний",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Премиальная карта — осенняя акция",
+      "titleStyle": {"fontSize": 17, "fontWeight": "medium", "textColor": "#000000FF"},
+      "text": "Повышенный кэшбэк в кафе и на заправках до 31 декабря",
+      "textStyle": {"fontSize": 13, "fontWeight": "medium", "textColor": "#808080FF"},
+      "background": {"color": "#E8FAFFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/3f2b8c14-7a91-4e5d-b6c8-12f0a9d3e471"},
+      "buttonName": "Оформить",
+      "actionType": "externalLink",
+      "link": {
+        "iOS": "mobilebank://products/card/premium",
+        "android": "mobilebank://products/card/premium",
+        "web": "https://promo.hackathon-crm.example/promo/premium-autumn"
+      },
+      "voiceOver": "Баннер: премиальная карта, повышенный кэшбэк"
+    }
+  },
+  {
+    "id": 202,
+    "campaignId": 102,
+    "name": "Сторис автоплатежи",
+    "bannerTypeId": 1,
+    "content": {
+      "title": "Кэшбэк за автоплатежи",
+      "titleStyle": {"fontSize": 20, "fontWeight": "semi-bold", "textColor": "#FFFFFFFF"},
+      "text": "Подключите автоплатежи и получайте до 10% кэшбэка",
+      "background": {"color": "#1244A8FF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/8d4e2f19-3c57-4a8b-9e21-6b7d0c5f8a34"},
+      "actionType": "openSmartLink",
+      "link": {
+        "iOS": "mobilebank://payments/auto_payments",
+        "android": "mobilebank://payments/auto_payments"
+      },
+      "voiceOver": "История: кэшбэк за автоплатежи"
+    }
+  },
+  {
+    "id": 203,
+    "campaignId": 103,
+    "name": "Баннер сомелье",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Сомелье: подбор вина",
+      "actionType": "default"
+    }
+  },
+  {
+    "id": 205,
+    "campaignId": 106,
+    "name": "Сторис путешествия",
+    "bannerTypeId": 1,
+    "content": {
+      "title": "Кэшбэк 5% на отели",
+      "titleStyle": {"fontSize": 22, "fontWeight": "bold", "textColor": "#FFFFFFFF"},
+      "text": "Бронируйте путешествия в приложении до 15 ноября",
+      "textStyle": {"fontSize": 14, "fontWeight": "regular", "textColor": "#FFFFFFFF"},
+      "background": {"color": "#7A00E6FF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/7f3c2a10-94e5-4b8d-a1c2-3d5f6e8a9b04"},
+      "buttonName": "Выбрать отель",
+      "actionType": "externalLink",
+      "link": {
+        "iOS": "mobilebank://travel/hotels",
+        "android": "mobilebank://travel/hotels"
+      },
+      "voiceOver": "История: кэшбэк пять процентов на отели"
+    }
+  },
+  {
+    "id": 206,
+    "campaignId": 106,
+    "name": "Смарт-баннер платежи",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Путешествия с кэшбэком",
+      "titleStyle": {"fontSize": 16, "fontWeight": "semi-bold", "textColor": "#000014FF"},
+      "background": {"color": "#F0F4FFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/5e9f1b27-8c34-4d69-a1e7-0f3b6d8c5a92"},
+      "buttonName": "Подробнее",
+      "actionType": "openSmartLink",
+      "link": {"android": "mobilebank://travel/main", "iOS": "mobilebank://travel/main"}
+    }
+  },
+  {
+    "id": 207,
+    "campaignId": 107,
+    "name": "Баннер страховки",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Страховка в поездку",
+      "titleStyle": {"fontSize": 16, "fontWeight": "medium", "textColor": "#000014FF"},
+      "text": "Оформите полис за 2 минуты перед отпуском",
+      "textStyle": {"fontSize": 13, "fontWeight": "regular", "textColor": "#00001499"},
+      "background": {"color": "#E6F7EEFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/9b3d7e41-6a28-4f15-c8d2-4e7a1b9f0c63"},
+      "buttonName": "Оформить",
+      "actionType": "externalLink",
+      "link": {"web": "https://promo.hackathon-crm.example/insurance/travel", "android": "mobilebank://insurance/travel", "iOS": "mobilebank://insurance/travel"}
+    }
+  },
+  {
+    "id": 208,
+    "campaignId": 108,
+    "name": "Баннер курса",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Финансовая грамотность",
+      "titleStyle": {"fontSize": 18, "fontWeight": "semi-bold", "textColor": "#000014FF"},
+      "background": {"color": "#FFF4E0FF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/2c8f4a63-1d79-4b2e-8f6a-9d0e3c7b5a14"},
+      "actionType": "default"
+    }
+  },
+  {
+    "id": 209,
+    "campaignId": 109,
+    "name": "Баннер подписки",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Мобильная подписка",
+      "titleStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#000014FF"},
+      "text": "Месяц интернета в подарок при первом подключении",
+      "textStyle": {"fontSize": 13, "fontWeight": "regular", "textColor": "#00001499"},
+      "background": {"color": "#E8FAFFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/7f1a3d58-9e62-4c84-b0d7-2a5f8e1c6b93"},
+      "buttonName": "Подключить",
+      "actionType": "doneCampaign",
+      "voiceOver": "Баннер: мобильная подписка, месяц в подарок"
+    }
+  },
+  {
+    "id": 210,
+    "campaignId": 110,
+    "name": "Сторис автокредит",
+    "bannerTypeId": 1,
+    "content": {
+      "title": "Автокредит от 7,9%",
+      "titleStyle": {"fontSize": 24, "fontWeight": "bold", "textColor": "#FFFFFFFF"},
+      "text": "Одобрение за 2 минуты, первый взнос от 10%",
+      "textStyle": {"fontSize": 15, "fontWeight": "regular", "textColor": "#FFFFFFFF"},
+      "background": {"color": "#003BF8FF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/4d7b2e96-5c13-4a8f-9e04-8b1c6f3a7d25"},
+      "actionType": "openSmartLink",
+      "link": {"iOS": "mobilebank://loans/auto", "android": "mobilebank://loans/auto"}
+    }
+  },
+  {
+    "id": 211,
+    "campaignId": 111,
+    "name": "Сторис марафон",
+    "bannerTypeId": 1,
+    "content": {
+      "title": "Зимний марафон скидок",
+      "titleStyle": {"fontSize": 26, "fontWeight": "bold", "textColor": "#FFFFFFFF"},
+      "text": "12 дней, новые категории каждый день",
+      "textStyle": {"fontSize": 14, "fontWeight": "medium", "textColor": "#FFFFFFFF"},
+      "background": {"color": "#24009EFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/6a3e9c17-4b85-4f2d-a7c1-1d8f0b5e9a46"},
+      "buttonName": "Участвовать",
+      "actionType": "externalLink",
+      "link": {"iOS": "mobilebank://promo/winter-marathon", "android": "mobilebank://promo/winter-marathon", "web": "https://promo.hackathon-crm.example/promo/winter-marathon"},
+      "voiceOver": "История: зимний марафон скидок, двенадцать дней"
+    }
+  },
+  {
+    "id": 212,
+    "campaignId": 112,
+    "name": "Баннер инвестиции",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Начните инвестировать",
+      "titleStyle": {"fontSize": 16, "fontWeight": "medium", "textColor": "#000014FF"},
+      "text": "Бесплатный курс для первых шагов",
+      "textStyle": {"fontSize": 13, "fontWeight": "regular", "textColor": "#00001499"},
+      "background": {"color": "#F0F4FFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/2b8e4d71-5c09-4f3a-8e2b-9a1c7d4f6e35.png"},
+      "actionType": "default"
+    }
+  },
+  {
+    "id": 213,
+    "campaignId": 113,
+    "name": "Баннер летний архив",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Летний кешбэк",
+      "titleStyle": {"fontSize": 16, "fontWeight": "regular", "textColor": "#000014FF"},
+      "background": {"color": "#FFF9E6FF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/0e5c8b72-3d19-4a6f-b2e8-7c4a1f9d3b58"},
+      "actionType": "default"
+    }
+  },
+  {
+    "id": 214,
+    "campaignId": 114,
+    "name": "Баннер переводы",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Переводы без комиссии",
+      "titleStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#000014FF"},
+      "text": "До 100 000 ₽ в месяц на любые карты",
+      "textStyle": {"fontSize": 13, "fontWeight": "regular", "textColor": "#00001499"},
+      "background": {"color": "#E8FAFFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/a1f4d829-7e63-4c05-8b7a-3d9e2c6f1b84"},
+      "buttonName": "Перевести",
+      "actionType": "externalLink",
+      "link": {"iOS": "mobilebank://payments/transfer", "android": "mobilebank://payments/transfer"}
+    }
+  },
+  {
+    "id": 215,
+    "campaignId": 115,
+    "name": "Баннер подписка кино",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Подписка на фильмы",
+      "titleStyle": {"fontSize": 15, "fontWeight": "medium", "textColor": "#000014FF"},
+      "text": "Первый месяц за 1 ₽ — тысячи фильмов и сериалов",
+      "textStyle": {"fontSize": 13, "fontWeight": "regular", "textColor": "#00001499"},
+      "background": {"color": "#F3E8FFFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/c6b9a3f1-2d48-4e75-9a0c-5f8d1e3b7a29"},
+      "actionType": "default"
+    }
+  },
+  {
+    "id": 216,
+    "campaignId": 111,
+    "name": "Баннер марафон смарт",
+    "bannerTypeId": 2,
+    "content": {
+      "title": "Зимний марафон скидок",
+      "titleStyle": {"fontSize": 16, "fontWeight": "semi-bold", "textColor": "#FFFFFFFF"},
+      "background": {"color": "#24009EFF"},
+      "image": {"url": "https://media.hackathon-crm.example/CAMPAIGNS/b8d2f5a7-1c93-4e62-8d4b-9a6f3c1e5d70"},
+      "buttonName": "Участвовать",
+      "actionType": "externalLink",
+      "link": {
+        "iOS": "mobilebank://promo/winter-marathon",
+        "android": "mobilebank://promo/winter-marathon",
+        "web": "https://promo.hackathon-crm.example/promo/winter-marathon"
+      }
+    }
+  }
+]

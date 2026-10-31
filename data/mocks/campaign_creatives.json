@@ -1,0 +1,17 @@
+[
+  {"id": 401, "campaignId": 101, "name": "Креатив Android", "bannerId": 201, "contentId": 301, "channelCode": "ANDROID"},
+  {"id": 402, "campaignId": 101, "name": "Креатив iOS", "bannerId": 201, "contentId": 301, "channelCode": "iOS"},
+  {"id": 403, "campaignId": 102, "name": "Креатив сторис iOS", "bannerId": 202, "contentId": 302, "channelCode": "iOS"},
+  {"id": 404, "campaignId": 103, "name": "Креатив без контента", "bannerId": 203, "contentId": null, "channelCode": "ANDROID"},
+  {"id": 406, "campaignId": 106, "name": "Креатив сторис iOS", "bannerId": 205, "contentId": 304, "channelCode": "iOS"},
+  {"id": 407, "campaignId": 106, "name": "Креатив сторис Android", "bannerId": 205, "contentId": 304, "channelCode": "ANDROID"},
+  {"id": 408, "campaignId": 107, "name": "Креатив страховка iOS", "bannerId": 207, "contentId": 305, "channelCode": "iOS"},
+  {"id": 409, "campaignId": 107, "name": "Креатив страховка Web", "bannerId": 207, "contentId": 305, "channelCode": "WEB"},
+  {"id": 410, "campaignId": 109, "name": "Креатив подписка Android", "bannerId": 209, "contentId": 306, "channelCode": "ANDROID"},
+  {"id": 411, "campaignId": 110, "name": "Креатив автокредит Android", "bannerId": 210, "contentId": 307, "channelCode": "ANDROID"},
+  {"id": 412, "campaignId": 111, "name": "Креатив марафон iOS", "bannerId": 211, "contentId": 308, "channelCode": "iOS"},
+  {"id": 413, "campaignId": 111, "name": "Креатив марафон Web", "bannerId": 216, "contentId": null, "channelCode": "WEB"},
+  {"id": 414, "campaignId": 112, "name": "Креатив инвестиции Android", "bannerId": 212, "contentId": 309, "channelCode": "ANDROID"},
+  {"id": 415, "campaignId": 114, "name": "Креатив переводы iOS", "bannerId": 214, "contentId": 310, "channelCode": "iOS"},
+  {"id": 416, "campaignId": 115, "name": "Креатив подписка кино", "bannerId": 215, "contentId": 311, "channelCode": "ANDROID"}
+]

@@ -1,0 +1,16 @@
+[
+  {"campaignId": 101, "included": ["CHANNEL_VIP", "CITY_MSK"], "excluded": ["EXC_UNSUBSCRIBED"]},
+  {"campaignId": 102, "included": [], "excluded": []},
+  {"campaignId": 103, "included": [], "excluded": []},
+  {"campaignId": 104, "included": ["AGE_26_45", "CITY_MSK"], "excluded": ["EXC_MORATORIUM"]},
+  {"campaignId": 106, "included": ["INTRS_TRAVEL", "AGE_26_45"], "excluded": ["EXC_OVERCOMMUNICATED"]},
+  {"campaignId": 107, "included": ["INTRS_TRAVEL", "CHANNEL_VIP"], "excluded": ["EXC_EMPLOYEES"]},
+  {"campaignId": 108, "included": [], "excluded": []},
+  {"campaignId": 109, "included": ["CHANNEL_NEW_USER", "AGE_18_25"], "excluded": []},
+  {"campaignId": 110, "included": ["INTRS_CARS", "AGE_26_45", "REGION_MOS_OBL"], "excluded": ["PRODUCT_AUTO_LOAN", "EXC_UNSUBSCRIBED"]},
+  {"campaignId": 111, "included": ["CHANNEL_MASS", "CHANNEL_MID"], "excluded": ["EXC_MORATORIUM", "EXC_UNSUBSCRIBED"]},
+  {"campaignId": 112, "included": ["AGE_18_25", "AGE_26_45", "CITY_MSK", "CITY_SPB"], "excluded": ["PRODUCT_SUBSCRIPTION"]},
+  {"campaignId": 113, "included": [], "excluded": []},
+  {"campaignId": 114, "included": ["PRODUCT_DC", "CHANNEL_MID"], "excluded": ["EXC_OVERCOMMUNICATED"]},
+  {"campaignId": 115, "included": [], "excluded": []}
+]

@@ -1,0 +1,20 @@
+{
+  "description": "Заглушка Content Broker (CBRO): вызывается при POST /campaigns/{id}/activate из state=APPROVED. В MVP всегда возвращает успех; ошибки брокера не эмулируются.",
+  "endpoint": {
+    "method": "POST",
+    "url": "/mock/cbro/export",
+    "request": {"campaignId": 102}
+  },
+  "responses": {
+    "success": {
+      "status": "OK",
+      "exportedAt": "2026-10-10T00:00:05"
+    }
+  },
+  "rules": [
+    "activate доступен только из state=APPROVED",
+    "при успехе: state=ACTIVE, published=true",
+    "повторная активация активной кампании (после правки) обновляет опубликованную версию; показ не прерывается",
+    "ошибки экспорта в CBRO в MVP не эмулируются — ассистент обрабатывает только ошибки валидации бэкенда"
+  ]
+}

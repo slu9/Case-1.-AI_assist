@@ -1,0 +1,4 @@
+[
+  {"id": 1, "code": "STORY", "description": "История", "previewForm": "MOBILE_STORY", "titleMaxLength": 100, "textMaxLength": 500, "channels": ["iOS", "ANDROID"]},
+  {"id": 2, "code": "SMART_BANNER", "description": "Смарт баннер", "previewForm": "MOBILE_BANNER", "titleMaxLength": 250, "textMaxLength": 1000, "channels": ["iOS", "ANDROID", "WEB"]}
+]
